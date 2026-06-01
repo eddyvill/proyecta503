@@ -1,0 +1,196 @@
+:root {
+    --primary-blue: #1e40af;
+    --light-blue: #3b82f6;
+    --bg-dark: #0a0e1a;
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --border-color: rgba(59, 130, 246, 0.2);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Manrope', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Canvas 3D en el fondo */
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none; /* Deja que el mouse pase a los botones */
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+    padding: 40px 20px;
+}
+
+/* Logo sin marco */
+.logo-wrapper {
+    display: inline-flex;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+.logo-image {
+    width: 280px;
+    height: auto;
+    filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.3));
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo-wrapper:hover .logo-image {
+    transform: scale(1.03);
+    filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.6));
+}
+
+.tag {
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid var(--border-color);
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--light-blue);
+    margin-bottom: 30px;
+}
+
+.headline {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.highlight {
+    font-weight: 800;
+    color: var(--light-blue);
+}
+
+.subheadline {
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 50px;
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+/* Countdown */
+.countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+}
+
+.time-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 25px;
+    background: rgba(10, 14, 26, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    min-width: 90px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.time-box:hover {
+    transform: translateY(-5px);
+    border-color: var(--light-blue);
+}
+
+.time-box span {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.time-box small {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    margin-top: 8px;
+}
+
+.time-separator {
+    font-size: 2rem;
+    color: var(--primary-blue);
+    font-weight: 300;
+}
+
+/* Formulario */
+.input-wrapper {
+    display: flex;
+    gap: 0;
+    background: rgba(10, 14, 26, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    max-width: 550px;
+    margin: 0 auto;
+    backdrop-filter: blur(10px);
+}
+
+input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 18px 25px;
+    color: var(--text-primary);
+    font-family: inherit;
+    outline: none;
+}
+
+button {
+    background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+    color: white;
+    border: none;
+    padding: 18px 30px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s;
+}
+
+button:hover { background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue)); }
+
+.footer {
+    margin-top: 80px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .logo-image { width: 200px; }
+    .time-separator { display: none; }
+    .input-wrapper { flex-direction: column; }
+    button { justify-content: center; }
+}
